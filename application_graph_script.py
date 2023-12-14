@@ -76,4 +76,4 @@ num_sent_per_day.reverse()
 fig = px.bar(x=last_30_days, y=num_sent_per_day, title="# of Applications Sent per Day [Last 30 Days]")
 
 # Save the figure as an HTML file
-fig.write_html('/path/to/your/local/directory/graph.html', auto_open=False)
+fig.write_html('/Users/andrew/Documents/Coding/Notion-Integrations/rendered_outputs/num-sent-30-days.html', auto_open=False)
