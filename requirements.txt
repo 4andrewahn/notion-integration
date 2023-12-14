@@ -1,0 +1,8 @@
+notion-client
+python-dotenv
+requests
+pandas
+matplotlib
+seaborn
+plotly.express
+kaleido
