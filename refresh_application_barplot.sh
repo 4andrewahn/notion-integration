@@ -7,6 +7,9 @@ source /Users/andrew/Documents/Coding/Notion-Integrations/.venv/bin/activate
 # Run your Python script to create new plot
 python /Users/andrew/Documents/Coding/Notion-Integrations/application_graph_script.py
 
+# Change working directory to project directory
+cd /Users/andrew/Documents/Coding/Notion-Integrations
+
 # Add changes to new Git commit
 git add -A
 
