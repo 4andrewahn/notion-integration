@@ -9,3 +9,7 @@
 Icon
 
 __pycache__/
+
+refresh_log.log
+
+main.ipynb
