@@ -6,6 +6,7 @@ LOG_FILE="/Users/andrew/Scripts/Notion-Integrations/refresh_log.log"
 # Start logging
 exec > >(/usr/bin/tee -a $LOG_FILE) 2>&1
 
+# Log script execution start
 echo "Starting script at $(/bin/date)"
 
 # Start SSH agent and add key
@@ -34,10 +35,10 @@ cd /Users/andrew/Scripts/Notion-Integrations
 # Push changes to GitHub
 /usr/bin/git push origin main
 
-# Deactivate the virtual environment
-source /Users/andrew/Scripts/Notion-Integrations/.venv/bin/deactivate
-
 # Kill the SSH agent
 kill $SSH_AGENT_PID
 
+# Log script execution end
 echo "Script completed at $(/bin/date)"
+
+# Note: virtual environment automatically deactivated after execution by `launchctl`
