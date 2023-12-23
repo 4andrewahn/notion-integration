@@ -35,7 +35,7 @@ cd /Users/andrew/Scripts/Notion-Integrations
 /usr/bin/git push origin main
 
 # Deactivate the virtual environment
-deactivate
+source /Users/andrew/Scripts/Notion-Integrations/.venv/bin/deactivate
 
 # Kill the SSH agent
 kill $SSH_AGENT_PID
