@@ -126,4 +126,4 @@ fig.update_yaxes(
 
 
 # Save the figure as an HTML file
-fig.write_html('/Users/andrew/Documents/Coding/Notion-Integrations/docs/index.html', auto_open=False)
+fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
