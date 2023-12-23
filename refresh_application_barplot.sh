@@ -38,7 +38,8 @@ cd /Users/andrew/Scripts/Notion-Integrations
 # Kill the SSH agent
 kill $SSH_AGENT_PID
 
-# Log script execution end
+# Log script execution end with additional line for readability 
 echo "Script completed at $(/bin/date)"
+echo ""
 
 # Note: virtual environment automatically deactivated after execution by `launchctl`
