@@ -40,7 +40,31 @@ df['date_applied'] = pd.to_datetime(df['date_applied'])
 df = df.sort_values(by='days_elapsed')
 
 
-''' Generate bar-plot of # of Applications Sent per Day [Last 30 Days] '''
+''' Generate bar-plot data for # of Applications Sent per Day [Last 30 Days] '''
+# Define color palette for bar
+'''
+10-color Temperature Gradient
+{ 
+    0: '#f77772',
+    1: '#f78072',
+    2: '#f78972',
+    3: '#f79272',
+    4: '#f79b72',
+    5: '#ea9b7f',
+    6: '#cf929a',
+    7: '#b589b4',
+    8: '#9a80cf',
+    9: '#7f77ea'
+}
+'''
+
+bar_color_palette = {
+    0: '#f72585',
+    1: '#7209b7',
+    2: '#3a0ca3',
+    3: '#4361ee',
+    4: '#4cc9f0'
+}
 
 # Generate a list of the last 30 days with today at the end of the list
 end_date = datetime.today()
@@ -64,7 +88,8 @@ for i in range(29, -1, -1):
         elif cur_date > date_applied:
             break
 
-    if ct > highest_y: highest_y = ct
+    if ct > highest_y: 
+        highest_y = ct
     formatted_last_date = cur_date.strftime('%b %-d')
     last_30_days.append(formatted_last_date)
     num_sent_per_day.append(ct)
@@ -74,14 +99,30 @@ num_sent_per_day.reverse()
 
 x_vals = last_30_days
 y_vals = num_sent_per_day
+for i in range(30):
+    print(f"x={x_vals[i]}, y={y_vals[i]}")
 
-# Create a bar plot
-fig = px.bar(df, x=last_30_days, y=num_sent_per_day,
-             color=num_sent_per_day,
-             hover_name=num_sent_per_day)
+print(f"{len(x_vals)} x-values")
+print(f"{len(y_vals)} y-values")
+
+bar_colors = [] # Stores colors for each bar according to y-value
+for y in y_vals:
+    cur_color = bar_color_palette.get(y, None)
+    if cur_color is not None:
+        bar_colors.append(cur_color)
+    else:
+        bar_colors.append('#80ffdb')
+
+print(f"{len(bar_colors)} colors in bar-colors")
+
+''' Create bar-plot # of Applications Sent per Day [Last 30 Days] '''
+fig = px.bar(df, x=x_vals, y=y_vals,
+             color=bar_colors,
+             hover_name=y_vals)
 
 # Customize the theme of the plot 
 fig.update_layout(
+    showlegend = False,
     paper_bgcolor='#191919', # Figure background color
     plot_bgcolor='#232425', # Plot background color
     font = { # Global font style 
@@ -96,11 +137,10 @@ fig.update_layout(
         "bgcolor": "#191919",
         "font_size": 14
     }
-    # bargap = 0.2
 )
 fig.update_traces(
-    marker_color = '#3a86ff',
-    marker_line_color = "#3a86ff",
+    marker_color = bar_colors,
+    marker_line_color = bar_colors,
     marker_line_width = 5
 )
 
