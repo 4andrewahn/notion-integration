@@ -41,30 +41,6 @@ df = df.sort_values(by='days_elapsed')
 
 
 ''' Generate bar-plot data for # of Applications Sent per Day [Last 30 Days] '''
-# Define color palette for bar
-'''
-10-color Temperature Gradient
-{ 
-    0: '#f77772',
-    1: '#f78072',
-    2: '#f78972',
-    3: '#f79272',
-    4: '#f79b72',
-    5: '#ea9b7f',
-    6: '#cf929a',
-    7: '#b589b4',
-    8: '#9a80cf',
-    9: '#7f77ea'
-}
-'''
-
-bar_color_palette = {
-    0: '#f72585',
-    1: '#7209b7',
-    2: '#3a0ca3',
-    3: '#4361ee',
-    4: '#4cc9f0'
-}
 
 # Generate a list of the last 30 days with today at the end of the list
 end_date = datetime.today()
@@ -97,28 +73,32 @@ for i in range(29, -1, -1):
 last_30_days.reverse()
 num_sent_per_day.reverse()
 
-x_vals = last_30_days
-y_vals = num_sent_per_day
-for i in range(30):
-    print(f"x={x_vals[i]}, y={y_vals[i]}")
+# Define color palette for bar
+bar_color_palette = {
+    '0': '#f72585',
+    '1': '#7209b7',
+    '2': '#3a0ca3',
+    '3': '#4361ee',
+    '4': '#4cc9f0'
+}
 
-print(f"{len(x_vals)} x-values")
-print(f"{len(y_vals)} y-values")
+for k in range(5, highest_y+1):
+    bar_color_palette[str(k)] = '#4cc9f0'
 
-bar_colors = [] # Stores colors for each bar according to y-value
-for y in y_vals:
-    cur_color = bar_color_palette.get(y, None)
-    if cur_color is not None:
-        bar_colors.append(cur_color)
-    else:
-        bar_colors.append('#80ffdb')
 
-print(f"{len(bar_colors)} colors in bar-colors")
+barplot_df = pd.DataFrame({
+        'Date': last_30_days,
+        'Count': num_sent_per_day,
+        'ct_str': [str(num) for num in num_sent_per_day]
+    }
+)
+
 
 ''' Create bar-plot # of Applications Sent per Day [Last 30 Days] '''
-fig = px.bar(df, x=x_vals, y=y_vals,
-             color=bar_colors,
-             hover_name=y_vals)
+fig = px.bar(barplot_df, x='Date', y='Count', color='ct_str',
+             color_discrete_map=bar_color_palette,
+             hover_data={'ct_str': False}
+             )
 
 # Customize the theme of the plot 
 fig.update_layout(
@@ -138,10 +118,9 @@ fig.update_layout(
         "font_size": 14
     }
 )
+
 fig.update_traces(
-    marker_color = bar_colors,
-    marker_line_color = bar_colors,
-    marker_line_width = 5
+    hovertemplate="<b>%{y}</b>sent<br><i>%{x}</i>"
 )
 
 fig.update_xaxes(
@@ -162,8 +141,8 @@ fig.update_yaxes(
     }
 )
 
-fig.show()
+# fig.show()
 
 
 # Save the figure as an HTML file
-# fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
+fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
