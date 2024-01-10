@@ -4,6 +4,7 @@ from datetime import datetime
 from notion_client import Client
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -75,15 +76,15 @@ num_sent_per_day.reverse()
 
 # Define color palette for bar
 bar_color_palette = {
-    '0': '#f72585',
-    '1': '#7209b7',
-    '2': '#3a0ca3',
-    '3': '#4361ee',
-    '4': '#4cc9f0'
+    '0': '#ff6176', #red
+    '1': '#ffb561', #orange
+    '2': '#dfff61', #yellow-green
+    '3': '#abff61', #green
+    '4': '#61ff81' #vibrant green
 }
 
 for k in range(5, highest_y+1):
-    bar_color_palette[str(k)] = '#4cc9f0'
+    bar_color_palette[str(k)] = '#61ffb5' #greenish cyan
 
 
 barplot_df = pd.DataFrame({
@@ -93,12 +94,19 @@ barplot_df = pd.DataFrame({
     }
 )
 
+bar_colors = [bar_color_palette[val] for val in barplot_df['ct_str']]
 
 ''' Create bar-plot # of Applications Sent per Day [Last 30 Days] '''
 fig = px.bar(barplot_df, x='Date', y='Count', color='ct_str',
              color_discrete_map=bar_color_palette,
              hover_data={'ct_str': False}
              )
+
+
+zeros_bar = []
+fig.add_trace(go.Bar(
+    x=barplot_df['Date'], 
+))
 
 # Customize the theme of the plot 
 fig.update_layout(
@@ -116,11 +124,13 @@ fig.update_layout(
     hoverlabel = {
         "bgcolor": "#191919",
         "font_size": 14
-    }
+    },
+    bargap=0.1
 )
 
 fig.update_traces(
-    hovertemplate="<b>%{y}</b>sent<br><i>%{x}</i>"
+    hovertemplate="<b>%{y}</b>sent<br><i>%{x}</i>",
+    marker_line_width=2
 )
 
 fig.update_xaxes(
@@ -132,6 +142,7 @@ fig.update_xaxes(
 )
 
 fig.update_yaxes(
+    range=[-0.1,highest_y+1],
     title_text = None,
     tickvals = [_ for _ in range(1, highest_y + 1)],
     ticktext = [f"{tval}  " for tval in range(1, highest_y + 1)],
@@ -141,8 +152,8 @@ fig.update_yaxes(
     }
 )
 
-# fig.show()
+fig.show()
 
 
 # Save the figure as an HTML file
-fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
+# fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
