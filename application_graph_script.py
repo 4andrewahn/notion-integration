@@ -122,13 +122,14 @@ fig.add_trace(go.Bar(x=zeros_bar_X, y=zeros_bar_Y, marker_color='#ff6176',
 # Customize the theme of the plot 
 fig.update_layout(
     showlegend = False,
-    paper_bgcolor='#191919', # Figure background color
+    paper_bgcolor='blue', # Figure background color
     plot_bgcolor='#232425', # Plot background color
     font = {"family": "Noto Sans, sans-serif","color": "#dee4ed"}, #Global font style
-    title = {'text': "# of Applications Sent per Day [Last 30 Days]", "font_size": 24},
+    title = {'text': "# of Applications Sent per Day [Last 30 Days]", "font_size": 20},
     hoverlabel = {"bgcolor": "#191919","font_size": 14},
     bargap=0.1
 )
+# paper_bgcolor='#191919', # Figure background color
 
 fig.update_xaxes(
     title_text = None,
@@ -150,8 +151,8 @@ fig.update_yaxes(
     }
 )
 
-# fig.show()
+fig.show()
 
 
 # Save the figure as an HTML file
-fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
+# fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
