@@ -48,11 +48,11 @@ end_date = datetime.today()
 start_date = end_date - pd.Timedelta(days=29)
 
 dates = pd.date_range(start=start_date, end=end_date, freq='D')
-dates_list = dates.to_list()
+dates_list = sorted(dates.to_list())
 
 # Generate X and Y values as a list to plot
-highest_y = 0
-last_30_days = []
+last_30_days_date = []
+last_30_days_date_object = []
 num_sent_per_day = []
 for i in range(29, -1, -1):
     ct = 0
@@ -65,14 +65,29 @@ for i in range(29, -1, -1):
         elif cur_date > date_applied:
             break
 
-    if ct > highest_y: 
-        highest_y = ct
     formatted_last_date = cur_date.strftime('%b %-d')
-    last_30_days.append(formatted_last_date)
+    last_30_days_date.append(formatted_last_date)
+    last_30_days_date_object.append(cur_date)
     num_sent_per_day.append(ct)
 
-last_30_days.reverse()
+last_30_days_date.reverse()
+last_30_days_date_object.reverse()
 num_sent_per_day.reverse()
+
+for i in range(30):
+    print(f"[{num_sent_per_day[i]}] - {last_30_days_date[i]}")
+
+# Dataframe to plot for bar-plot
+barplot_df = pd.DataFrame({
+        'Date_Obj': last_30_days_date_object, 
+        'Date': last_30_days_date,
+        'Count': num_sent_per_day,
+        'color_group': [str(num) for num in num_sent_per_day]
+    }
+)
+
+# Sort the DataFrame by 'Date' in ascending order
+barplot_df = barplot_df.sort_values(by='Date_Obj')
 
 # Define color palette for bar
 bar_color_palette = {
@@ -83,22 +98,16 @@ bar_color_palette = {
     '4': '#61ff81' #vibrant green
 }
 
+highest_y = max(barplot_df['Count'])
+
 for k in range(5, highest_y+1):
     bar_color_palette[str(k)] = '#61ffb5' #greenish cyan
 
 
-# Dataframe to plot for bar-plot
-barplot_df = pd.DataFrame({
-        'Date': last_30_days,
-        'Count': num_sent_per_day,
-        'color_group': [str(num) for num in num_sent_per_day]
-    }
-)
-
 ''' Create bar-plot # of Applications Sent per Day [Last 30 Days] '''
 fig = px.bar(barplot_df, x='Date', y='Count', color='color_group',
              color_discrete_map=bar_color_palette,
-             hover_data={'color_group': False}
+             hover_data={'color_group': False, 'Date_Obj': False}
              )
 
 # Update hovertemplate for the main bar trace
@@ -148,8 +157,8 @@ fig.update_yaxes(
     }
 )
 
-# fig.show()
+fig.show()
 
 
 # Save the figure as an HTML file
-fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
+# fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
