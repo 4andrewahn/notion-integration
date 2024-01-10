@@ -70,9 +70,6 @@ for i in range(29, -1, -1):
 last_30_days_date.reverse()
 num_sent_per_day.reverse()
 
-for i in range(30):
-    print(f"[{num_sent_per_day[i]}] - {last_30_days_date[i]}")
-
 # Dataframe to plot for bar-plot
 barplot_df = pd.DataFrame({
         'Date': last_30_days_date,
@@ -80,7 +77,6 @@ barplot_df = pd.DataFrame({
         'color_group': [str(num) for num in num_sent_per_day]
     }
 )
-
 
 # Sort the DataFrame by 'Date' in ascending order
 barplot_df.sort_values(by='Date')
@@ -98,8 +94,6 @@ highest_y = max(barplot_df['Count'])
 
 for k in range(5, highest_y+1):
     bar_color_palette[str(k)] = '#61ffb5' #greenish cyan
-
-print(barplot_df.to_string())
 
 
 ''' Create bar-plot # of Applications Sent per Day [Last 30 Days] '''
