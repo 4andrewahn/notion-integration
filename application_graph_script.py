@@ -87,25 +87,35 @@ for k in range(5, highest_y+1):
     bar_color_palette[str(k)] = '#61ffb5' #greenish cyan
 
 
+# Dataframe to plot for bar-plot
 barplot_df = pd.DataFrame({
         'Date': last_30_days,
         'Count': num_sent_per_day,
-        'ct_str': [str(num) for num in num_sent_per_day]
+        'color_group': [str(num) for num in num_sent_per_day]
     }
 )
 
-bar_colors = [bar_color_palette[val] for val in barplot_df['ct_str']]
-
 ''' Create bar-plot # of Applications Sent per Day [Last 30 Days] '''
-fig = px.bar(barplot_df, x='Date', y='Count', color='ct_str',
+fig = px.bar(barplot_df, x='Date', y='Count', color='color_group',
              color_discrete_map=bar_color_palette,
-             hover_data={'ct_str': False}
+             hover_data={'color_group': False}
              )
 
+# Update hovertemplate for the main bar trace
+fig.update_traces(
+    hovertemplate='<b>%{y}</b> sent<br><i>%{x}</i><extra></extra>'
+)
 
-zeros_bar = []
-fig.add_trace(go.Bar(
-    x=barplot_df['Date'], 
+# Adding the zeros bar trace (for readability)
+zeros_bar_X = []
+zeros_bar_Y = []
+for i in range(30):
+    if barplot_df['Count'][i] == 0:
+        zeros_bar_X.append(barplot_df['Date'][i])
+        zeros_bar_Y.append(0.1)
+
+fig.add_trace(go.Bar(x=zeros_bar_X, y=zeros_bar_Y, marker_color='#ff6176',
+                     hovertemplate='<b>0</b> sent<br><i>%{x}</i><extra></extra>'
 ))
 
 # Customize the theme of the plot 
@@ -113,24 +123,11 @@ fig.update_layout(
     showlegend = False,
     paper_bgcolor='#191919', # Figure background color
     plot_bgcolor='#232425', # Plot background color
-    font = { # Global font style 
-        "family": "Noto Sans, sans-serif",
-        "color": "#dee4ed"
-    },
-    title = {
-        'text': "# of Applications Sent per Day [Last 30 Days]",
-        "font_size": 24
-    },
-    hoverlabel = {
-        "bgcolor": "#191919",
-        "font_size": 14
-    },
-    bargap=0.1
-)
-
-fig.update_traces(
-    hovertemplate="<b>%{y}</b>sent<br><i>%{x}</i>",
-    marker_line_width=2
+    font = {"family": "Noto Sans, sans-serif","color": "#dee4ed"}, #Global font style
+    title = {'text': "# of Applications Sent per Day [Last 30 Days]", "font_size": 24},
+    hoverlabel = {"bgcolor": "#191919","font_size": 14},
+    bargap=0.1,
+    barmode='overlay'
 )
 
 fig.update_xaxes(
@@ -142,7 +139,6 @@ fig.update_xaxes(
 )
 
 fig.update_yaxes(
-    range=[-0.1,highest_y+1],
     title_text = None,
     tickvals = [_ for _ in range(1, highest_y + 1)],
     ticktext = [f"{tval}  " for tval in range(1, highest_y + 1)],
@@ -152,8 +148,8 @@ fig.update_yaxes(
     }
 )
 
-fig.show()
+# fig.show()
 
 
 # Save the figure as an HTML file
-# fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
+fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
