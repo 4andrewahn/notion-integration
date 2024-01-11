@@ -149,7 +149,7 @@ fig.update_yaxes(
         "family": "Noto Sans, sans-serif",
         "color": "#dee4ed"
     },
-    gridcolor='#6c757d'
+    gridcolor='#495057'
 )
 
 fig.show()
