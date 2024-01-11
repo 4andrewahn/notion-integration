@@ -122,7 +122,7 @@ fig.add_trace(go.Bar(x=zeros_bar_X, y=zeros_bar_Y, marker_color='#ff6176',
 # Customize the theme of the plot 
 fig.update_layout(
     showlegend = False,
-    paper_bgcolor='blue', # Figure background color
+    paper_bgcolor='#191919', # Figure background color
     plot_bgcolor='#232425', # Plot background color
     font = {"family": "Noto Sans, sans-serif","color": "#dee4ed"}, #Global font style
     title = {'text': "# of Applications Sent per Day [Last 30 Days]", "font_size": 20},
@@ -130,7 +130,6 @@ fig.update_layout(
     bargap=0.1,
     margin={'l':10, 'r':10}
 )
-# paper_bgcolor='#191919', # Figure background color
 
 fig.update_xaxes(
     title_text = None,
@@ -150,8 +149,7 @@ fig.update_yaxes(
         "family": "Noto Sans, sans-serif",
         "color": "#dee4ed"
     },
-    gridcolor='yellow',
-    griddash='dot'
+    gridcolor='#6c757d'
 )
 
 fig.show()
