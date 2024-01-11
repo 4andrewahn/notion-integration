@@ -128,7 +128,7 @@ fig.update_layout(
     title = {'text': "# of Applications Sent per Day [Last 30 Days]", "font_size": 20},
     hoverlabel = {"bgcolor": "#191919","font_size": 14},
     bargap=0.1,
-    margin={'l':0, 'r':0}
+    margin={'l':10, 'r':10}
 )
 # paper_bgcolor='#191919', # Figure background color
 
