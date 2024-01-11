@@ -128,8 +128,7 @@ fig.update_layout(
     title = {'text': "# of Applications Sent per Day [Last 30 Days]", "font_size": 20},
     hoverlabel = {"bgcolor": "#191919","font_size": 14},
     bargap=0.1,
-    margin={'l':0, 'r':0},
-    bordercolor='yellow'
+    margin={'l':0, 'r':0}
 )
 # paper_bgcolor='#191919', # Figure background color
 
@@ -150,7 +149,9 @@ fig.update_yaxes(
     tickfont = {
         "family": "Noto Sans, sans-serif",
         "color": "#dee4ed"
-    }
+    },
+    gridcolor='yellow',
+    griddash='dot'
 )
 
 fig.show()
