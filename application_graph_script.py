@@ -152,8 +152,8 @@ fig.update_yaxes(
     gridcolor='#495057'
 )
 
-fig.show()
+# fig.show()
 
 
 # Save the figure as an HTML file
-# fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
+fig.write_html('/Users/andrew/Scripts/Notion-Integrations/docs/index.html', auto_open=False)
