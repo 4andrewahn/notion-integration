@@ -1,2 +1,32 @@
 
 
+Starting script at Sun Feb  4 01:22:44 PST 2024
+Traceback (most recent call last):
+  File "/Users/andrew/Scripts/Notion-Integrations/todo_reset_script.py", line 72, in <module>
+    update_and_reset_todo_entries(item)
+  File "/Users/andrew/Scripts/Notion-Integrations/todo_reset_script.py", line 43, in update_and_reset_todo_entries
+    'number': page_obj['properties']['[Updated Total Mins Spent]']['formula']['number']
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'number'
+Script completed at Sun Feb  4 01:22:46 PST 2024
+
+Starting script at Sun Feb  4 01:43:16 PST 2024
+Traceback (most recent call last):
+  File "/Users/andrew/Scripts/Notion-Integrations/todo_reset_script.py", line 71, in <module>
+    update_and_reset_todo_entries(item)
+  File "/Users/andrew/Scripts/Notion-Integrations/todo_reset_script.py", line 43, in update_and_reset_todo_entries
+    'number': page_obj['properties']['[Updated Total Mins Spent]']['formula']['number']
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'number'
+Script completed at Sun Feb  4 01:43:17 PST 2024
+
+Starting script at Sun Feb  4 01:54:38 PST 2024
+Traceback (most recent call last):
+  File "/Users/andrew/Scripts/Notion-Integrations/todo_reset_script.py", line 71, in <module>
+    update_and_reset_todo_entries(item)
+  File "/Users/andrew/Scripts/Notion-Integrations/todo_reset_script.py", line 43, in update_and_reset_todo_entries
+    'number': page_obj['properties']['[Updated Total Mins Spent]']['formula']['number']
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'number'
+Script completed at Sun Feb  4 01:54:39 PST 2024
+
