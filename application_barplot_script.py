@@ -24,17 +24,14 @@ db = notion.databases.query(**{'database_id': APPLICATION_DATABASE_ID}).get('res
 parsed_data = {
     'days_elapsed': [],
     'date_applied': []
-    # 'status': [] # now changed to 'multi_select'
 }
 
 for entry in db:
     db_days_elapsed = entry['properties']['days elapsed']['formula']['number']
     db_date_applied = entry['properties']['Date Applied']['date']['start']
-    # db_status = entry['properties']['Status']['select']['name']
 
     parsed_data['date_applied'].append(db_date_applied)
     parsed_data['days_elapsed'].append(db_days_elapsed)
-    # parsed_data['status'].append(db_status)
 
 df = pd.DataFrame(parsed_data)
 df['date_applied'] = pd.to_datetime(df['date_applied'])
