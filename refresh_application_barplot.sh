@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Log file path
-LOG_FILE="/Users/andrew/Scripts/Notion-Integrations/refresh_log.log"
+LOG_FILE="/Users/andrew/Scripts/Notion-Integrations/application_refresh_log.log"
 
 # Start logging
 exec > >(/usr/bin/tee -a $LOG_FILE) 2>&1
@@ -21,7 +21,7 @@ eval "$(/usr/bin/ssh-agent -s)"
 source /Users/andrew/Scripts/Notion-Integrations/.venv/bin/activate
 
 # Run your Python script to create new plot
-/Users/andrew/Scripts/Notion-Integrations/.venv/bin/python /Users/andrew/Scripts/Notion-Integrations/application_graph_script.py
+/Users/andrew/Scripts/Notion-Integrations/.venv/bin/python /Users/andrew/Scripts/Notion-Integrations/application_barplot_script.py
 
 # Change working directory to project directory
 cd /Users/andrew/Scripts/Notion-Integrations
@@ -30,7 +30,7 @@ cd /Users/andrew/Scripts/Notion-Integrations
 /usr/bin/git add -A
 
 # Add commit message
-/usr/bin/git commit -m "updated bar-plot"
+/usr/bin/git commit -m "updated barplot"
 
 # Push changes to GitHub
 /usr/bin/git push origin main

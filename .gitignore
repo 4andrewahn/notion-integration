@@ -10,6 +10,6 @@ Icon
 
 __pycache__/
 
-refresh_log.log
+application_refresh_log.log
 
 testing.ipynb

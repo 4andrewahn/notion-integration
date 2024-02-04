@@ -1,4 +1,4 @@
-''' Main Notion Integration '''
+''' Applications Database Plotting Integration '''
 import os
 from datetime import datetime
 from notion_client import Client
