@@ -12,4 +12,6 @@ __pycache__/
 
 application_refresh_log.log
 
+todo_update_log.log
+
 testing.ipynb
