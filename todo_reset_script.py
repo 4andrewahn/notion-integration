@@ -55,15 +55,18 @@ def update_and_reset_todo_entries(page_obj):
     
     update_data = {
         # Clear Start timestamps
-        '[Time Started]': { 
+        '[Time Started]': {
+            'id': page_obj['properties']['[Time Started]']['id'],
             'date': None
         },
         # Reset Status
-        'Status': { 
+        'Status': {
+            'id': page_obj['properties']['Status']['id'],
             'status': {'name': 'Not started'}
         },
         # Increment 'Due' date by '[Repeat in # days]'
-        'Due': { 
+        'Due': {
+            'id': page_obj['properties']['Due']['id'],
             'date': {'start': next_due_date_str}
         }
     }
@@ -73,8 +76,11 @@ def update_and_reset_todo_entries(page_obj):
         update_data['[Time Completed]'] = {'date': None}
         
         # Update running totals data
-        update_data['[Total Mins Spent]'] = page_obj['properties']['[Updated Total Mins Spent]']['formula']['number']
-        update_data['[Total #\'s Completed]'] = page_obj['properties']['[Updated Total #\'s Completed]']['formula']['number']
+        if 'number' in page_obj['properties']['[Updated Total Mins Spent]']['formula'].keys():
+            update_data['[Total Mins Spent]'] = page_obj['properties']['[Updated Total Mins Spent]']['formula']['number']
+
+        if 'number' in page_obj['properties']['[Updated Total #\'s Completed]']['formula'].keys():
+            update_data['[Total #\'s Completed]'] = page_obj['properties']['[Updated Total #\'s Completed]']['formula']['number']
 
     notion.pages.update(page_id=P_id, properties=update_data)
 
