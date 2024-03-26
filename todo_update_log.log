@@ -519,3 +519,11 @@ Traceback (most recent call last):
 KeyError: '[Recurring?]'
 Script completed at Mon Mar 25 00:04:41 PDT 2024
 
+Starting script at Tue Mar 26 00:08:06 PDT 2024
+Traceback (most recent call last):
+  File "/Users/andrew/Scripts/Notion-Integrations/todo_reset_script.py", line 94, in <module>
+    if item['properties']['[Recurring?]']['checkbox'] == True:
+       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: '[Recurring?]'
+Script completed at Tue Mar 26 00:08:08 PDT 2024
+
