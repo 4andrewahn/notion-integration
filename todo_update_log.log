@@ -2057,3 +2057,11 @@ Traceback (most recent call last):
 httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
 Script completed at Sat Jul  6 00:10:30 PDT 2024
 
+Starting script at Sun Jul  7 00:01:32 PDT 2024
+Traceback (most recent call last):
+  File "/Users/andrew/Scripts/Notion-Integrations/todo_reset_script.py", line 94, in <module>
+    if item['properties']['[Recurring?]']['checkbox'] == True:
+       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: '[Recurring?]'
+Script completed at Sun Jul  7 00:01:36 PDT 2024
+
