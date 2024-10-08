@@ -2929,3 +2929,93 @@ Traceback (most recent call last):
 KeyError: '[Recurring?]'
 Script completed at Mon Oct  7 00:01:10 PDT 2024
 
+Starting script at Tue Oct  8 00:03:56 PDT 2024
+Traceback (most recent call last):
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 10, in map_exceptions
+    yield
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 126, in read
+    return self._sock.recv(max_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/anaconda3/lib/python3.11/ssl.py", line 1296, in recv
+    return self.read(buflen)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/anaconda3/lib/python3.11/ssl.py", line 1169, in read
+    return self._sslobj.read(len)
+           ^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 66, in map_httpcore_exceptions
+    yield
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 228, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 268, in handle_request
+    raise exc
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 251, in handle_request
+    response = connection.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 133, in handle_request
+    raise exc
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 111, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 176, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 212, in _receive_event
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 124, in read
+    with map_exceptions(exc_map):
+  File "/Users/andrew/anaconda3/lib/python3.11/contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/notion_client/client.py", line 191, in request
+    response = self.client.send(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpx/_client.py", line 901, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpx/_client.py", line 929, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpx/_client.py", line 966, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1002, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 227, in handle_request
+    with map_httpcore_exceptions():
+  File "/Users/andrew/anaconda3/lib/python3.11/contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 83, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/andrew/Scripts/Notion-Integrations/todo_reset_script.py", line 16, in <module>
+    db = notion.databases.query(**{'database_id': TODO_DATABASE_ID}).get('results')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/notion_client/api_endpoints.py", line 132, in query
+    return self.parent.request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andrew/Scripts/Notion-Integrations/.venv/lib/python3.11/site-packages/notion_client/client.py", line 193, in request
+    raise RequestTimeoutError()
+notion_client.errors.RequestTimeoutError: Request to Notion API has timed out
+Script completed at Tue Oct  8 01:05:13 PDT 2024
+
