@@ -3333,3 +3333,11 @@ Traceback (most recent call last):
 notion_client.errors.RequestTimeoutError: Request to Notion API has timed out
 Script completed at Mon Nov  4 00:53:10 PST 2024
 
+Starting script at Tue Nov  5 00:09:53 PST 2024
+Traceback (most recent call last):
+  File "/Users/andrew/Scripts/Notion-Integrations/todo_reset_script.py", line 94, in <module>
+    if item['properties']['[Recurring?]']['checkbox'] == True:
+       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: '[Recurring?]'
+Script completed at Tue Nov  5 00:10:00 PST 2024
+
