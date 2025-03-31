@@ -6432,3 +6432,11 @@ Traceback (most recent call last):
 KeyError: '[Recurring?]'
 Script completed at Thu Mar 20 00:07:15 PDT 2025
 
+Starting script at Fri Mar 21 00:01:05 PDT 2025
+/Users/andrew/Scripts/Notion-Integrations/reset_todo_list.sh: line 16: /Users/andrew/Scripts/Notion-Integrations/.venv/bin/python: No such file or directory
+Script completed at Fri Mar 21 00:01:05 PDT 2025
+
+Starting script at Sun Mar 30 20:43:53 PDT 2025
+/Users/andrew/Scripts/Notion-Integrations/reset_todo_list.sh: line 16: /Users/andrew/Scripts/Notion-Integrations/.venv/bin/python: No such file or directory
+Script completed at Sun Mar 30 20:43:53 PDT 2025
+
