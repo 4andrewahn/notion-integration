@@ -6480,3 +6480,7 @@ Starting script at Wed Apr  9 00:04:17 PDT 2025
 /Users/andrew/Scripts/Notion-Integrations/reset_todo_list.sh: line 16: /Users/andrew/Scripts/Notion-Integrations/.venv/bin/python: No such file or directory
 Script completed at Wed Apr  9 00:04:17 PDT 2025
 
+Starting script at Thu Apr 10 00:04:10 PDT 2025
+/Users/andrew/Scripts/Notion-Integrations/reset_todo_list.sh: line 16: /Users/andrew/Scripts/Notion-Integrations/.venv/bin/python: No such file or directory
+Script completed at Thu Apr 10 00:04:10 PDT 2025
+
